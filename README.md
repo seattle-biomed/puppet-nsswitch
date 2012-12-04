@@ -1,16 +1,16 @@
-nsswitch
+# nsswitch
 
-This is the nsswitch module.
+This module does very basic configuration of /etc/nsswitch.conf.  Developed
+for Ubuntu; tested on 12.04.
 
-License
--------
+## License
 
+Apache License.
 
-Contact
--------
+## Contact
 
+Reach Andrew Leonard via GitHub (see below).
 
-Support
--------
+## Support
 
-Please log tickets and issues at our [Projects site](http://projects.example.com)
+Please use the issue tracker on [GitHub](https://github.com/seattle-biomed/puppet-nsswitch)
