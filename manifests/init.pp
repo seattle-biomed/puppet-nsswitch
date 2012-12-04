@@ -1,41 +1,43 @@
 # == Class: nsswitch
 #
-# Full description of class nsswitch here.
+# Simple configuration of /etc/nsswitch.conf.
+#
+# Developed for Ubuntu; tested on 12.04.
 #
 # === Parameters
 #
-# Document parameters here.
+# [*group*]
+#   Information sources for groups of users, used by getgrent(3) functions.
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# [*passwd*]
+#   Information sources for user passwords, used by getpwent(3) functions.
 #
-# === Variables
-#
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if it
-#   has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should not be used in preference to class parameters  as of
-#   Puppet 2.6.)
+# [*shadow*]
+#   Information sources for shadow user passwords, used by getspnam(3).
 #
 # === Examples
 #
-#  class { nsswitch:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
-#  }
+#  include nsswitch
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Andrew Leonard
 #
 # === Copyright
 #
-# Copyright 2011 Your name here, unless otherwise noted.
+# Copyright 2012 Andrew Leonard, Seattle Biomedical Research Institute
 #
-class nsswitch {
+class nsswitch (
+  $group  = 'compat',
+  $passwd = 'compat',
+  $shadow = 'compat'
+  ){
 
+  file { '/etc/nsswitch.conf':
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0444',
+    content => template('nsswitch/nsswitch.conf.erb'),
+  }
 
 }

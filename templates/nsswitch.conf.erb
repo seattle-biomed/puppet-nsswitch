@@ -1,0 +1,17 @@
+# /etc/nsswitch.conf
+#
+# Managed by Puppet - do not edit
+
+passwd:         <%= passwd %>
+group:          <%= group %>
+shadow:         <%= shadow %>
+
+hosts:          files dns
+networks:       files
+
+protocols:      db files
+services:       db files
+ethers:         db files
+rpc:            db files
+
+netgroup:       nis
